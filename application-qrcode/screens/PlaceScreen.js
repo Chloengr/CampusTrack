@@ -105,8 +105,8 @@ const styles = StyleSheet.create({
   },
   text:{
     width: 320,
-    height: 250,
-    fontSize: 18,
+    height: 370,
+    fontSize: 17,
     textAlign: 'justify',
     fontFamily: 'Montserrat-Medium'
   },
