@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { SplashScreen } from 'expo';
 import  PlaceScreen  from './screens/PlaceScreen';
+import  Bretagne  from './screens/Bretagne';
 import  HomeScreen  from './screens/HomeScreen';
 import  LinksScreen  from './screens/LinksScreen';
 
@@ -60,8 +61,8 @@ export default function App(props) {
           <Stack.Navigator>
             <Stack.Screen name="Accueil" component={HomeScreen} />
             <Stack.Screen name="L'île de Sein" component={PlaceScreen} />
-            <Stack.Screen name="Bretagne" component={PlaceScreen} />
-            <Stack.Screen name="Camargue" component={LinksScreen} />
+            <Stack.Screen name="Bretagne" component={Bretagne} />
+            <Stack.Screen name="Camargue" component={HomeScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
