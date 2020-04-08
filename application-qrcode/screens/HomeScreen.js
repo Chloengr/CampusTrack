@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Image, StyleSheet, Text, View, Picker, Button, Alert } from 'react-native';
+import { Image, StyleSheet, Text, View, Picker } from 'react-native';
+import { Button } from 'react-native-elements'
 
-export default function HomeScreen() {
+export default function HomeScreen({navigation}) {
   const [selectedValue, setSelectedValue] = useState("Bretagne");
   return (
     <View style={styles.container}>
@@ -10,32 +11,35 @@ export default function HomeScreen() {
         <Image source={require('../assets/images/logo.png')} style={styles.logo} />
       </View>
       <View style={{flex:1, flexDirection: 'column'}}>
-        <View style={{marginLeft: 20 }}>
+        <View style={{marginLeft: 20}}>
           <Text style={styles.getStartedText}>Sélectionner une région ou lieu emblématique</Text>
-          <Picker selectedValue={selectedValue} style={{ width: 250 }}
+          <Picker selectedValue={selectedValue} style={{ width: 250}} itemStyle={{fontFamily: 'Montserrat-Medium' }}
             onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)} >
             <Picker.Item label="Bretagne" value="Bretagne" />
-            <Picker.Item label="L'île de Sein" value="Ile" />
+            <Picker.Item label="L'île de Sein" value="L'île de Sein" />
             <Picker.Item label="La Camargue" value="Camargue" />
           </Picker>
         </View>
-        <View style={{color: 'red', alignSelf: 'flex-start', marginLeft: 100}}>
-          <Button onPress={onPressButton} title="Valider" />
-        </View>
       </View>
       <View style={styles.containerMap}>
+        <Button onPress={() => navigation.navigate(selectedValue)} title="Valider"
+        titleStyle={{
+          color: "white",
+          fontSize: 18,
+          fontFamily: 'Montserrat-Medium'
+        }}
+        buttonStyle={{
+          backgroundColor: "#FF2AC1",
+          borderRadius: 60,
+          height: 50,
+          width: 100
+        }}/>
         <Image source={require('../assets/images/carte.png')} style={styles.mapImage}/>
       </View>
     </View>
   );
 }
-HomeScreen.navigationOptions = {
-  header : null
-}
 
-function onPressButton() {
-    Alert.alert('You clicked the button!')
-  }
 
 const styles = StyleSheet.create({
   container: {
@@ -43,10 +47,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   containerMap:{
+    flexDirection: "row",
     alignItems: 'center',
+    padding: 100,
+    fontFamily: 'Montserrat-Medium'
   },
   logo: {
-    width: 100,
+    width: 80,
     height: 80,
     resizeMode: 'contain',
     marginTop: 3,
@@ -58,6 +65,8 @@ const styles = StyleSheet.create({
   },
   getStartedText: {
     fontSize: 25,
-    color: 'black'
+    marginTop: 20,
+    color: 'black',
+    fontFamily: 'Comfortaa-Light'
   }
 });
