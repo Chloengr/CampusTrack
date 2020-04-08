@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { SplashScreen } from 'expo';
+import  PlaceScreen  from './screens/PlaceScreen';
+import  HomeScreen  from './screens/HomeScreen';
+import  LinksScreen  from './screens/LinksScreen';
+
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import BottomTabNavigator from './navigation/BottomTabNavigator';
 import useLinking from './navigation/useLinking';
 
 const Stack = createStackNavigator();
@@ -30,6 +33,10 @@ export default function App(props) {
         await Font.loadAsync({
           ...Ionicons.font,
           'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
+          'Montserrat-Medium': require('./assets/fonts/Montserrat-Medium.ttf'),
+          'Montserrat-SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
+          'Comfortaa-Regular': require('./assets/fonts/Comfortaa-Regular.ttf'),
+          'Comfortaa-Light': require('./assets/fonts/Comfortaa-Light.ttf')
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
@@ -51,7 +58,10 @@ export default function App(props) {
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <NavigationContainer ref={containerRef} initialState={initialNavigationState}>
           <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+            <Stack.Screen name="Accueil" component={HomeScreen} />
+            <Stack.Screen name="L'île de Sein" component={PlaceScreen} />
+            <Stack.Screen name="Bretagne" component={PlaceScreen} />
+            <Stack.Screen name="Camargue" component={LinksScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>
