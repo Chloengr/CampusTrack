@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   text:{
     width: 320,
     height: 250,
+    fontSize: 18,
     textAlign: 'justify',
     fontFamily: 'Montserrat-Medium'
   },
